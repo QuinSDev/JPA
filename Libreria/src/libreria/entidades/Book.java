@@ -1,10 +1,6 @@
 package libreria.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Book {
@@ -16,9 +12,10 @@ public class Book {
     private Integer age;
     private Integer copies;
     private Integer borrowedCopies;
+    private Integer remainingCopies;
     private Boolean high = true;
     
-    @OneToOne
+    @ManyToOne
     private Author author;
     
     @OneToOne
@@ -75,6 +72,14 @@ public class Book {
 
     public void setBorrowedCopies(Integer borrowedCopies) {
         this.borrowedCopies = borrowedCopies;
+    }
+    
+    public Integer getRemaininCopies() {
+        return remainingCopies;
+    }
+    
+    public void setRemainingCopies(Integer remainingCopies) {
+        this.remainingCopies = remainingCopies;
     }
 
     public Boolean getHigh() {
