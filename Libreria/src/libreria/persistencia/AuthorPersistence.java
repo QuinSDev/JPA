@@ -1,18 +1,16 @@
 package libreria.persistencia;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import libreria.entidades.Author;
 
 public class AuthorPersistence {
     
+    @PersistenceContext(unitName = "LibreriaPU")
+    private EntityManager em;
     Author author = null;
     
     public void createPersistence(String name) {
-        
-        EntityManager em = Persistence.createEntityManagerFactory("LibreriaPU")
-                .createEntityManager();
         
         try {
             author = new Author();
