@@ -6,6 +6,7 @@ public class MenuService {
     
     Scanner read = new Scanner(System.in);
     int width = 50;
+    AuthorService authorS = new AuthorService();
             
     public void menuMain() {
         
@@ -45,8 +46,9 @@ public class MenuService {
                 System.out.print("\nEnter the desired option: ");
                 String op = read.nextLine();
                 option = Integer.parseInt(op);
+                optionsMenu(option);
                 
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.print("-".repeat(width));
                 System.out.println("\nError! Enter a valid numeric value.");
                 option = 0;
@@ -68,15 +70,19 @@ public class MenuService {
         
         switch(option) {
             case 1:
+                authorS.createAuthor();
                 break;
             case 2:
+                authorS.modifyAuthor();
                 break;
             case 3:
+                authorS.deleteAuthor();
                 break;
             case 4:
                 break;
             default:
-                System.out.println("\nOption invalid! Try again.");
+                System.out.print("-".repeat(width));
+                System.out.println("\nInvalid option! Try again.");
         }
         
     }
