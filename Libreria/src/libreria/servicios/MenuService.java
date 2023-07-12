@@ -59,7 +59,7 @@ public class MenuService {
             }
             
             
-        } while (option != 4);
+        } while (option != 3);
         
     }
     
@@ -109,6 +109,47 @@ public class MenuService {
         
     }
     
+     public void bookMenu() {
+         
+         String bookMenu = "Book menu",
+                 bookEnter = "1. Enter a book into the database",
+                 bookModify = "2. Modify a book",
+                 bookDelete = "3. Inactive a book from the database",
+                 exit = "4. Exit";
+         
+         int paddingM = (width - bookMenu.length()) / 2;
+         int paddingE = (width - bookEnter.length()) / 2;
+         int paddingMo = (width - bookModify.length()) / 2;
+         int paddingD = (width - bookDelete.length()) / 2;
+         int paddinEx = (width - exit.length()) / 2;
+         
+         do {             
+             try {
+                System.out.println("\n"+"-".repeat(width));
+                staticMenu(paddingM, paddingM, bookMenu);
+                System.out.println("\n"+"-".repeat(width));
+                staticMenu(paddingD, (paddingE+1), bookEnter);
+                System.out.println("");
+                staticMenu(paddingD, (paddingMo+9), bookModify);
+                System.out.println("");
+                staticMenu(paddingD, (paddingD-1), bookDelete);
+                System.out.println("");
+                staticMenu(paddingD, (paddinEx+14), exit);
+                System.out.println("\n"+"-".repeat(width));
+                System.out.print("\nEnter the desired option: ");
+                String op = read.nextLine();
+                option = Integer.parseInt(op);
+                optionsBook(option);
+                 
+             } catch (NumberFormatException e) {
+                System.out.print("-".repeat(width));
+                System.out.println("\nError! Enter a valid numeric value.");
+                option = 0;
+             }
+         } while (option != 4);
+        
+    }
+    
     public void staticMenu(int paddin1,int paddin, String message) {
         
         System.out.format("|%" + paddin1 + "s%s%" + (paddin-1) + "s|", "",
@@ -123,10 +164,9 @@ public class MenuService {
                 authorMenu();
                 break;
             case 2:
+                bookMenu();
                 break;
             case 3:
-                break;
-            case 4:
                 break;
             default:
                 System.out.print("-".repeat(width));
@@ -151,6 +191,24 @@ public class MenuService {
                 authorS.authorSearch();
                 break;
             case 5:
+                menuMain();
+                break;
+            default:
+                System.out.print("-".repeat(width));
+                System.out.println("\nInvalid option! Try again.");
+        }
+    }
+    
+    public void optionsBook(int option) {
+        
+        switch(option) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
                 menuMain();
                 break;
             default:
