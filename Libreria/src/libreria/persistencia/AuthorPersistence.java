@@ -63,7 +63,7 @@ public class AuthorPersistence {
 
             return author;
 
-        } catch (Exception e) {
+        } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
         return null;
@@ -97,9 +97,8 @@ public class AuthorPersistence {
         try {
             em.getTransaction().begin();
             author = em.find(Author.class, id);
-
-            em.remove(author);
-
+            author.setHigh(false);
+            em.persist(author);
             em.getTransaction().commit();
 
         } catch (Exception e) {
@@ -110,6 +109,27 @@ public class AuthorPersistence {
         }
 
     }
+
+    public List<Author> authorSearch(String name) {
+
+        AuthorPersistence();
+
+        try {
+            List<Author> authors = em.createQuery("SELECT a FROM Author a"
+                    + " WHERE a.nombre LIKE :nombre")
+                    .setParameter("nombre", name).getResultList();
+
+            return authors;
+
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            closeEntityManager();
+        }
+        return null;
+
+    }
+
 
     public void orderAuthor() {
 

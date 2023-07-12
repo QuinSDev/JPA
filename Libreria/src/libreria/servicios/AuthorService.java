@@ -1,5 +1,6 @@
 package libreria.servicios;
 
+import java.util.List;
 import java.util.Scanner;
 import libreria.entidades.Author;
 import libreria.persistencia.AuthorPersistence;
@@ -73,9 +74,9 @@ public class AuthorService {
         } while (author == null);
 
     }
-    
+
     public void deleteAuthor() {
-        
+
         do {
             try {
                 System.out.print("\nEnter the author id: ");
@@ -94,7 +95,41 @@ public class AuthorService {
             }
 
         } while (author == null);
-        
+
+    }
+
+    public void authorSearch() {
+
+        String name = "";
+        List<Author> authors = null;
+        do {
+            try {
+                System.out.print("\nEnter the author name: ");
+                name = read.nextLine();
+
+                if (name == null || name.isEmpty()) {
+                    System.out.println("-".repeat(50));
+                    throw new IllegalArgumentException("You must indicate a name!\n");
+                }
+
+                authors = authorP.authorSearch(name);
+
+                if (authors.isEmpty()) {
+                    System.out.println("-".repeat(50));
+                    throw new IllegalArgumentException("The author with the "
+                            + "specified name does not exist!");
+                }
+                
+                System.out.println("-".repeat(50));
+                for (Author author1 : authors) {
+                    System.out.println("Name: " + author1.getNombre());
+                }
+
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (name.isEmpty() || authors.isEmpty());
+
     }
 
 }
