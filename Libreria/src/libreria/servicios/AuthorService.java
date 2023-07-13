@@ -17,7 +17,7 @@ public class AuthorService {
 
         do {
             try {
-                System.out.print("\nEnter the author's name: ");
+                System.out.print("Enter the author's name: ");
                 name = read.nextLine();
 
                 if (name == null || name.isEmpty()) {

@@ -8,9 +8,13 @@
             <file>file:/C:/Users/USUARIO/Desktop/JPA/Libreria/src/META-INF/persistence.xml</file>
             <file>file:/C:/Users/USUARIO/Desktop/JPA/Libreria/src/libreria/Libreria.java</file>
             <file>file:/C:/Users/USUARIO/Desktop/JPA/Libreria/src/libreria/entidades/Author.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/JPA/Libreria/src/libreria/servicios/EditorialService.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/JPA/Libreria/src/libreria/servicios/BookService.java</file>
             <file>file:/C:/Users/USUARIO/Desktop/JPA/Libreria/src/libreria/entidades/Book.java</file>
             <file>file:/C:/Users/USUARIO/Desktop/JPA/Libreria/src/libreria/servicios/AuthorService.java</file>
             <file>file:/C:/Users/USUARIO/Desktop/JPA/Libreria/src/libreria/entidades/Editorial.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/JPA/Libreria/src/libreria/persistencia/EditorialPersistence.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/JPA/Libreria/src/libreria/persistencia/BookPersistence.java</file>
         </group>
     </open-files>
 </project-private>

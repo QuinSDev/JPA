@@ -3,6 +3,7 @@ package libreria.servicios;
 import java.util.Scanner;
 import libreria.entidades.Author;
 import libreria.entidades.Book;
+import libreria.entidades.Editorial;
 import libreria.persistencia.BookPersistence;
 
 public class BookService {
@@ -10,8 +11,10 @@ public class BookService {
     Scanner read = new Scanner(System.in);
     BookPersistence bookP = new BookPersistence();
     AuthorService authorS = new AuthorService();
+    EditorialService editorialS = new EditorialService();
     Book book;
     Author author;
+    Editorial editorial;
 
     public void createBook() {
 
@@ -75,7 +78,9 @@ public class BookService {
                                 - book.getBorrowedCopies());
 
                         author = authorS.createAuthor();
+                        editorial = editorialS.createEditorial();
                         book.setAuthor(author);
+                        book.setEditorial(editorial);
                         bookP.createBook(book);
 
                     } catch (NumberFormatException e) {
