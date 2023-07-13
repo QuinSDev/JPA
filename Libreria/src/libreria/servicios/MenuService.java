@@ -7,6 +7,7 @@ public class MenuService {
     Scanner read = new Scanner(System.in);
     int width = 50;
     AuthorService authorS = new AuthorService();
+    BookService bookS = new BookService();
     int option = 0;
     
     public void welcome() {
@@ -203,6 +204,7 @@ public class MenuService {
         
         switch(option) {
             case 1:
+                bookS.createBook();
                 break;
             case 2:
                 break;

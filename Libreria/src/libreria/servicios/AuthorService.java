@@ -11,7 +11,7 @@ public class AuthorService {
     AuthorPersistence authorP = new AuthorPersistence();
     Author author;
 
-    public void createAuthor() {
+    public Author createAuthor() {
 
         String name = "";
 
@@ -21,16 +21,17 @@ public class AuthorService {
                 name = read.nextLine();
 
                 if (name == null || name.isEmpty()) {
-                    System.out.println("-".repeat(24));
+                    System.out.println("-".repeat(50));
                     throw new IllegalAccessException("You must enter the name!\n");
                 }
 
-                authorP.createPersistence(name);
-
+                author = authorP.createPersistence(name);
+                return author;
             } catch (IllegalAccessException e) {
                 System.out.println(e.getMessage());
             }
         } while (name.isEmpty());
+        return null;
 
     }
 

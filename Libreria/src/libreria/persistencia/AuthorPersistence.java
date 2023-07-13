@@ -23,7 +23,7 @@ public class AuthorPersistence {
         em = emf.createEntityManager();
     }
 
-    public void createPersistence(String name) {
+    public Author createPersistence(String name) {
 
         AuthorPersistence();
 
@@ -39,6 +39,7 @@ public class AuthorPersistence {
             em.getTransaction().begin();
             em.persist(author);
             em.getTransaction().commit();
+            return author;
 
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
@@ -46,6 +47,7 @@ public class AuthorPersistence {
         } finally {
             closeEntityManager();
         }
+        return null;
     }
 
     public Author findAuthor(Integer id) {
