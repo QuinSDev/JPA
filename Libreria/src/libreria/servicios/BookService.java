@@ -61,7 +61,7 @@ public class BookService {
                         System.out.println("-".repeat(50));
                         System.out.println("You must enter a correct year!");
                     }
-                    
+
                 } while (book.getAge() == null);
 
                 do {
@@ -87,7 +87,7 @@ public class BookService {
                         System.out.println("-".repeat(50));
                         System.out.println("Enter a valid numeric value!");
                     }
-                    
+
                 } while (book.getCopies() == null);
 
             } catch (IllegalArgumentException e) {
@@ -95,6 +95,29 @@ public class BookService {
                 System.out.println("Enter a valid ISBN!");
             }
 
+        } while (book.getIsbn() == null);
+
+    }
+
+    public void inactiveBook() {
+
+        do {
+            try {
+                System.out.print("Enter the ISBN of the book: ");
+                String isbn = read.nextLine();
+                Long isb = Long.parseLong(isbn);
+
+                book = bookP.findBook(isb);
+
+                book.setHigh(false);
+
+                bookP.createBook(book);
+
+            } catch (NumberFormatException e) {
+                System.out.println("-".repeat(50));
+                System.out.println("Enter a valid a numeric value");
+            }
+            
         } while (book.getIsbn() == null);
 
     }

@@ -10,6 +10,7 @@ public class BookPersistence {
     private EntityManagerFactory emf
             = Persistence.createEntityManagerFactory("LibreriaPU");
     private EntityManager em = emf.createEntityManager();
+    Book books = null;
     
     public void conectBook() {
         if (!em.isOpen()) {
@@ -30,5 +31,24 @@ public class BookPersistence {
         em.getTransaction().commit();
         disconectBook();
     }
+        
     
+    public Book findBook(Long book){
+        conectBook();
+        try {
+            books = em.find(Book.class, book);
+            
+            if (books == null) {
+                System.out.println("-".repeat(50));
+                throw new NullPointerException("You must indicate a book!");
+            }
+            
+            return books;
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return null;
+        
+    }
 }

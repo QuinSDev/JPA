@@ -261,6 +261,7 @@ public class MenuService {
                 bookModify();
                 break;
             case 3:
+                bookS.inactiveBook();
                 break;
             case 4:
                 menuMain();
