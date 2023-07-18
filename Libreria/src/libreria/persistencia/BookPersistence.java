@@ -32,16 +32,18 @@ public class BookPersistence {
         disconectBook();
     }
         
+    public void updateBook(Book book) {
+        conectBook();
+        em.getTransaction().begin();
+        em.merge(book);
+        em.getTransaction().commit();
+        disconectBook();
+    }
     
     public Book findBook(Long book){
         conectBook();
         try {
             books = em.find(Book.class, book);
-            
-            if (books == null) {
-                System.out.println("-".repeat(50));
-                throw new NullPointerException("You must indicate a book!");
-            }
             
             return books;
         } catch (NullPointerException e) {

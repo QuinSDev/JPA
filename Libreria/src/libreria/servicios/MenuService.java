@@ -155,7 +155,7 @@ public class MenuService {
         
         String bookModify = "Book modify",
                 nameModify = "1. Modify name",
-                ageModify = "2 .Modify age of publication",
+                ageModify = "2. Modify age of publication",
                 copiesModify = "3. Modify copies",
                 authorModify = "4. Modify author",
                 editorialModify = "5. Modify editorial",
@@ -190,8 +190,9 @@ public class MenuService {
                 System.out.print("\nEnter the desired option: ");
                 String op = read.nextLine();
                 option = Integer.parseInt(op);
+                optionsBookModify(option);
                 
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.println("-".repeat(width));
                 System.out.println("Error! Enter a valid numeric value");
                 option = 0;
@@ -276,10 +277,13 @@ public class MenuService {
         
         switch(option) {
             case 1:
+                bookS.modifyName();
                 break;
             case 2:
+                bookS.modifyAgePublication();
                 break;
             case 3:
+                bookS.updateCopies();
                 break;
             case 4:
                 break;
