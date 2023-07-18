@@ -150,6 +150,57 @@ public class MenuService {
          } while (option != 4);
         
     }
+     
+    public void bookModify() {
+        
+        String bookModify = "Book modify",
+                nameModify = "1. Modify name",
+                ageModify = "2 .Modify age of publication",
+                copiesModify = "3. Modify copies",
+                authorModify = "4. Modify author",
+                editorialModify = "5. Modify editorial",
+                exit = "6. Exit";
+        
+        int paddingB = (width - bookModify.length()) / 2;
+        int paddingN = (width - nameModify.length()) / 2;
+        int paddingA = (width - ageModify.length()) / 2;
+        int paddingC = (width - copiesModify.length()) / 2;
+        int paddingAu = (width - authorModify.length()) / 2;
+        int paddingE = (width - editorialModify.length()) / 2;
+        int paddingEx = (width - exit.length()) / 2;
+        
+        do {
+            try {
+                
+                System.out.println("\n"+"-".repeat(width));
+                staticMenu(paddingB, paddingB, bookModify);
+                System.out.println("\n"+"-".repeat(width));
+                staticMenu(paddingA, (paddingN+6), nameModify);
+                System.out.println("");
+                staticMenu(paddingA, (paddingA-1), ageModify);
+                System.out.println("");
+                staticMenu(paddingA, (paddingC+5), copiesModify);
+                System.out.println("");
+                staticMenu(paddingA, (paddingAu+5), authorModify);
+                System.out.println("");
+                staticMenu(paddingA, (paddingE+4), editorialModify);
+                System.out.println("");
+                staticMenu(paddingA, (paddingEx+10), exit);
+                System.out.println("\n"+"-".repeat(width));
+                System.out.print("\nEnter the desired option: ");
+                String op = read.nextLine();
+                option = Integer.parseInt(op);
+                
+            } catch (Exception e) {
+                System.out.println("-".repeat(width));
+                System.out.println("Error! Enter a valid numeric value");
+                option = 0;
+            }
+            
+        } while (option != 6);
+                
+        
+    }
     
     public void staticMenu(int paddin1,int paddin, String message) {
         
@@ -207,6 +258,7 @@ public class MenuService {
                 bookS.createBook();
                 break;
             case 2:
+                bookModify();
                 break;
             case 3:
                 break;
@@ -216,6 +268,28 @@ public class MenuService {
             default:
                 System.out.print("-".repeat(width));
                 System.out.println("\nInvalid option! Try again.");
+        }
+    }
+    
+    public void optionsBookModify(int option) {
+        
+        switch(option) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+             default:
+                System.out.print("-".repeat(width));
+                System.out.println("\nInvalid option! Try again.");   
+                
         }
     }
     

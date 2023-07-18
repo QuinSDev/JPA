@@ -10,6 +10,7 @@ public class AuthorService {
     Scanner read = new Scanner(System.in);
     AuthorPersistence authorP = new AuthorPersistence();
     Author author;
+    List<Author> authors = null;
 
     public Author createAuthor() {
 
@@ -24,9 +25,13 @@ public class AuthorService {
                     System.out.println("-".repeat(50));
                     throw new IllegalAccessException("You must enter the name!\n");
                 }
-
-                author = authorP.createPersistence(name);
-                return author;
+                
+                if (authorDuplicate(name) != null) {
+                    return author = authorDuplicate(name);
+                } else {
+                    return author = authorP.createPersistence(name);
+                }
+                
             } catch (IllegalAccessException e) {
                 System.out.println(e.getMessage());
             }
@@ -98,11 +103,28 @@ public class AuthorService {
         } while (author == null);
 
     }
+    
+    public Author authorDuplicate(String name) {
+        
+        try {
+            authors = authorP.authorSearch(name);
+            
+            for (Author author1 : authors) {
+                if (author1.getNombre().equalsIgnoreCase(name)) {
+                    return author1;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return null;
+        
+    }
 
     public void authorSearch() {
 
         String name = "";
-        List<Author> authors = null;
+        
         do {
             try {
                 System.out.print("\nEnter the author name: ");
@@ -122,7 +144,7 @@ public class AuthorService {
                 }
                 
                 System.out.println("-".repeat(50));
-                for (Author author1 : authors) {
+                for(Author author1 : authors) {
                     System.out.println("Name: " + author1.getNombre());
                 }
 
