@@ -100,7 +100,7 @@ public class AuthorPersistence {
             em.getTransaction().begin();
             author = em.find(Author.class, id);
             author.setHigh(false);
-            em.persist(author);
+            em.merge(author);
             em.getTransaction().commit();
 
         } catch (Exception e) {
@@ -112,14 +112,13 @@ public class AuthorPersistence {
 
     }
 
-    public List<Author> authorSearch(String name) {
+    public List<Author> authorSearch() {
 
         AuthorPersistence();
 
         try {
-            List<Author> authors = em.createQuery("SELECT a FROM Author a"
-                    + " WHERE a.nombre LIKE :nombre")
-                    .setParameter("nombre", name).getResultList();
+            List<Author> authors = em.createQuery("SELECT a FROM Author a")
+                    .getResultList();
 
             return authors;
 

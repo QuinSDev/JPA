@@ -107,7 +107,7 @@ public class AuthorService {
     public Author authorDuplicate(String name) {
         
         try {
-            authors = authorP.authorSearch(name);
+            authors = authorP.authorSearch();
             
             for (Author author1 : authors) {
                 if (author1.getNombre().equalsIgnoreCase(name)) {
@@ -135,9 +135,9 @@ public class AuthorService {
                     throw new IllegalArgumentException("You must indicate a name!\n");
                 }
 
-                authors = authorP.authorSearch(name);
+                authors = authorP.authorSearch();
 
-                if (authors.isEmpty()) {
+                if (authors.isEmpty() || authors == null) {
                     System.out.println("-".repeat(50));
                     throw new IllegalArgumentException("The author with the "
                             + "specified name does not exist!");
@@ -145,10 +145,15 @@ public class AuthorService {
                 
                 System.out.println("-".repeat(50));
                 for(Author author1 : authors) {
-                    System.out.println("Name: " + author1.getNombre());
+                    if (author1.getNombre().contains(name)) {
+                        System.out.println("Name: " + author1.getNombre());
+                    }
+                    
                 }
 
             } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e){
                 System.out.println(e.getMessage());
             }
         } while (name.isEmpty() || authors.isEmpty());
